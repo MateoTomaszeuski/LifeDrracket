@@ -48,6 +48,11 @@
   
   alive-cells)
 
+(define (alive-or-kill cell-list c)
+  (define alive-cells (get-alive-cells-around cell-list c))
+  (cond ((or ( < (length alive-cells) 2) (> (length alive-cells) 3)) (make-cell (x-coordinate c) (y-coordinate c) #t))
+        (else (make-cell (x-coordinate c) (y-coordinate c) #f)))
+  )
 
 (define c1(make-cell 1 1 #t))
 (define c2(make-cell 2 1 #f))
@@ -73,4 +78,7 @@
 
 (display(get-alive-cells-around cells c1))
 (newline)
+
+(display(map (lambda (i)
+      (alive-or-kill cells i)) cells))
 
