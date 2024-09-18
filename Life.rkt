@@ -92,12 +92,13 @@
  (newline)
  
 (let loop ((times 0))
-(if (= times 10) (display "done")
-  (begin (newline)
+(if (= times 100000) (display "done")
+  (begin 
+  (newline)
  (display "Display New Board: ")(display times)
- (newline)
+  (newline)
  (set! cells (generation cells))
- (display cells)
- (newline)
+  (display cells)
+  (newline)
  (loop (+ times 1)) )))
  
